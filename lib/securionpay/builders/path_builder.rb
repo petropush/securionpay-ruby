@@ -37,6 +37,14 @@ module SecurionPay
         end
       end
 
+      def self.build_subscriptions_path(customer_id, subscription_id = nil)
+        if subscription_id
+          "/customers/#{customer_id}/subscriptions/#{subscription_id}"
+        else
+          "/customers/#{customer_id}/subscriptions"
+        end
+      end
+
       def self.build_cross_sale_offers_path(cross_sale_offer_id = nil)
         if cross_sale_offer_id
           "/cross_sale_offers/#{cross_sale_offer_id}"
