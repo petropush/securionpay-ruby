@@ -8,8 +8,8 @@ module SecurionPay
 
     @web_consumer = HTTParty
 
-    def self.get(path)
-      web_consumer.get(url(path), request_body)
+    def self.get(path, query)
+      web_consumer.get(url(path), request_query(query))
     end
 
     def self.post(path, body)
@@ -30,6 +30,15 @@ module SecurionPay
         basic_auth: {
           username: Configuration.secret_key
         }
+      }
+    end
+
+    def self.request_query(query = nil)
+      {
+          query: query,
+          basic_auth: {
+              username: Configuration.secret_key
+          }
       }
     end
 
