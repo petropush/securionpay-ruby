@@ -22,9 +22,10 @@ module SecurionPay
       )
     end
 
-    def self.list
+    def self.list(params)
       communicator.get(
-        path_builder.build_charges_path
+        path_builder.build_charges_path,
+        params
       )
     end
 
